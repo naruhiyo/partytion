@@ -14,6 +14,8 @@ class ResultViewController: UIViewController {
     @IBOutlet weak var pieChartView: PieChartView!
     @IBOutlet weak var yesLabel: UILabel!
     @IBOutlet weak var noLabel: UILabel!
+    var yes: Int!
+    var no: Int!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +25,7 @@ class ResultViewController: UIViewController {
     
     private func setupPieChartView() {
         self.pieChartView.usePercentValuesEnabled = true
-        let values: [Double] = [30, 70]
+        let values: [Double] = [Double(self.yes), Double(self.no)]
         let yesNo : [Double] = [1, 2]
         var entries: [ChartDataEntry] = Array()
         for (i, value) in values.enumerated(){
@@ -46,7 +48,7 @@ class ResultViewController: UIViewController {
         pieChartView.chartDescription?.enabled = false
         pieChartView.minOffset = 0
         
-        yesLabel.text = "Yes: " + String(values[0])
-        noLabel.text = "No: " + String(values[1])
+        yesLabel.text = "Yes: " + String(self.yes)
+        noLabel.text = "No: " + String(self.no)
     }
 }

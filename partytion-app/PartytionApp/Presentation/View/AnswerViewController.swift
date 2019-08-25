@@ -29,6 +29,12 @@ class AnswerViewController: UIViewController {
         let resultStoryboard :UIStoryboard = UIStoryboard(name: "ResultScreen", bundle: nil)
         let resultViewController :UIViewController = resultStoryboard.instantiateViewController(withIdentifier: "ResultViewController")
         
+        if let secondVC = resultViewController as? ResultViewController {
+            // Yes-No回答の集計値をここで代入して、結果表示画面に渡す
+            secondVC.yes = 20
+            secondVC.no = 5
+        }
+        
         present(resultViewController, animated: true, completion: nil)
     }
 }
